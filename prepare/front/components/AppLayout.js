@@ -27,3 +27,5 @@ AppLayout.prototype = {
 };
 
 export default AppLayout;
+
+// 특정 컴포넌트끼리 공통인 경우 (일부)
