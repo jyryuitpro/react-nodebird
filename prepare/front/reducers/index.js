@@ -41,7 +41,7 @@ const changeNickname = (data) => {
 
 changeNickname('boogijyryuitpro');
 
-store.dispatch(changeNickname('boogijyryuitpro'));
+// store.dispatch(changeNickname('boogijyryuitpro'));
 
 // (이전상태, 액션) => 다음상태
 const rootReducer = ((state = initialState, action) => {
