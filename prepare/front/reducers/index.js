@@ -1,32 +1,20 @@
 import {HYDRATE} from "next-redux-wrapper";
+import {combineReducers} from "redux";
 
-const initialState = {
+import user from './user';
+import post from './post';
+
+// const initialState = {
     // name: 'jyryuitpro',
     // age: 33,
     // password: '1234',
-    user: {
-        isLoggedIn: false,
-        user: null,
-        signUpData: {},
-        loginData: {},
-    },
-    post: {
-        mainPosts: [],
-    },
-};
+    // user: {
 
-export const loginAction = (data) => {
-    return {
-        type: 'LOG_IN',
-        data,
-    }
-};
+    // },
+    // post: {
 
-export const logoutAction = () => {
-    return {
-        type: 'LOG_OUT',
-    }
-};
+    // },
+// };
 
 // const CHANGE_NICKNAME = {
 //     type: 'CHANGE_NICKNAME',
@@ -34,47 +22,30 @@ export const logoutAction = () => {
 // };
 
 // action creator
-const changeNickname = (data) => {
-    return {
-        type: 'CHANGE_NICKNAME',
-        data,
-    };
-};
+// const changeNickname = (data) => {
+//     return {
+//         type: 'CHANGE_NICKNAME',
+//         data,
+//     };
+// };
 
-changeNickname('boogijyryuitpro');
+// changeNickname('boogijyryuitpro');
 
 // store.dispatch(changeNickname('boogijyryuitpro'));
 
 // (이전상태, 액션) => 다음상태
-const rootReducer = ((state = initialState, action) => {
-    switch (action.type) {
-        case HYDRATE:
-            console.log('HYDRATE', action);
-            return {
-                ...state,
-                ...action.payload
-            };
-        case 'LOG_IN':
-            return {
-                ...state,
-                user: {
-                    ...state.user,
-                    isLoggedIn: true,
-                    user: action.data,
-                }
-            };
-        case 'LOG_OUT':
-            return {
-                ...state,
-                user: {
-                    ...state.user,
-                    isLoggedIn: false,
-                    user: null,
-                }
-            };
-        default:
-            return state;
-    }
+const rootReducer = combineReducers({
+    index: (state = {}, action) => {
+        switch (action.type) {
+            case HYDRATE:
+                console.log('HYDRATE', action);
+                return {...state, ...action.payload};
+            default:
+                return state;
+        }
+    },
+    user,
+    post,
 });
 
 export default rootReducer;
